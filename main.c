@@ -21,7 +21,7 @@ int shell_main(int env, char *argv[])
 	{
 		exit(EXIT_FAILURE);
 	}
-	signal(SIGINT, handle_sigint);
+	signal(signal, handle_sigint);
 	handle_getline(argv[0]);
 
 	return (0);
