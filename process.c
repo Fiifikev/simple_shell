@@ -21,7 +21,7 @@ if (my_pid < 0)
 {
 perror("fork fail");
 free_shell(cmd);
-
+}
 else if (my_pid == 0)
 {
 /*parent process return value of zero*/

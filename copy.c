@@ -31,7 +31,7 @@ return (1);
  *@str: string pointer
  *Return: len
  */
-unsigned int _strlen(const char *str)
+int _strlen(const char *str)
 {
 int len;
 len = 0;
@@ -45,3 +45,27 @@ return (len);
 }
 
 /**to Convert the string to an interger*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

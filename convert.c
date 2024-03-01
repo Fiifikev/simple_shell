@@ -1,8 +1,4 @@
 #include "main.h"
-
-
-
-
 /**
  *_atoi - Converts string  to to integer.
  *@str1: String input
@@ -20,8 +16,7 @@ solution = 0;
 tracker = 1;
 str3 = 0;
 
-for (idx = 0;  str1[idx] != '\0'
-&& str3 != 2; idx++)
+for (idx = 0;  str1[idx] != '\0' && str3 != 2; idx++)
 {
 if (str1[idx] == '-')
 tracker *= -1;

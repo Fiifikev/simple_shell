@@ -11,7 +11,7 @@
 
 void process_child(char **cmd, char *name, char **env, int cic);
 int _strcmp(const char *str1, const char *str2);
-unsigned int _strlen(const char *str);
+int _strlen(const char *str);
 int _atoi(char *str1);
 char *_strcpy(char *destination, char *source);
 char *_strcat(char *destination, char *source);

@@ -35,10 +35,9 @@ size_t len = 0;
 i = 0;
 
 while (env[i])
-{
 len = _strlen(env[i]);
 write(STDOUT_FILENO, env[i], len);
 write(STDOUT_FILENO, "\n", 1);
 i++;
 }
-}
+
