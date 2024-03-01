@@ -18,3 +18,21 @@ free(buffstr);
 exit(EXIT_SUCCESS);
 }
 
+
+/**
+ *_strlen - Finds the length of a string
+ *@s: string pointer
+ *Return: length
+ */
+unsigned int _strlen(char *s)
+{
+int len;
+len = 0;
+
+if (s == NULL)
+return (0);
+
+while (*s++)
+len++;
+return (len);
+}

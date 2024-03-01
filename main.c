@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  *main - main shell
  *@ac: arguments
@@ -7,11 +6,9 @@
  *@av: argumnets
  *Return:0;
  */
-
 int main(int ac, char **av, char **env)
 {
 char *line;
-char *prompt = "\n$$";
 char **cmd;
 size_t size = 0;
 ssize_t stream = 0;
@@ -20,18 +17,15 @@ line = NULL;
 cic = 0;
 (void)ac;
 
-
 while (1)
 {
 cic++;
-if (isatty(STDIN_FILENO))
-write(STDOUT_FILENO, prompt, 12);
+num_of_prompt();
+signal(SIGNIT, handle_signal);
 stream = getline(&line, &size, stdin);
-signal(sig, handle_signal);
+/*signal(SIGNIT, handle_signal);*/
 
-
-
-if ((stream == EOF))
+if (stream == EOF)
 _end_of_file(line);
 else if (*line == '\n')
 free(line);

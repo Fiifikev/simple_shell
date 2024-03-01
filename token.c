@@ -8,10 +8,10 @@
 /**
  **shell_token - Split puroses
  *@str:  delimniter
- *@buff:  input string.
+ *@line:  input string.
  *Return: command.
  */
-char **shell_token(char *buff, const char *str)
+char **shell_token(char *line, const char *str)
 {
 char *token = NULL;
 int i;
@@ -20,21 +20,21 @@ size_t bufflenSize = 0;
 cmds = NULL;
 i = 0;
 
-if (!buff)
+if (!line)
 return (NULL);
 
-bufflenSize = _strlen(buff);
+bufflenSize = _strlen(line);
 /*to check up on the string command*/
 cmds = malloc((bufflenSize + 1) * sizeof(char *));
 if (cmds == NULL)
 {
 shell_mem(cmds);
 perror("Error");
-free(buff);
+free(line);
 exit(EXIT_FAILURE);
 }
 
-token = strtok(buff, str);
+token = strtok(line, str);
 while (token != NULL)
 {
 cmds[i] = malloc(_strlen(token) + 1);

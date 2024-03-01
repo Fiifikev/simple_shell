@@ -28,7 +28,7 @@ return (1);
  *@env: environ point
  *Return: Nothing to put
  */
-char *_getenv(char **env)
+void _getenv(char **env)
 {
 size_t i;
 size_t len = 0;
