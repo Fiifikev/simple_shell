@@ -1,7 +1,4 @@
 #include "main.h"
-
-
-
 /**
  * find_path - gets from PATH
  * @env:  command environ
@@ -30,3 +27,19 @@ value = strtok(env[i], "=");
 }
 return (NULL);
 }
+
+/**
+ * handle_signal- Handles signals
+ * @num_of_prompt: prompts the handle
+ * Return: 0
+ */
+
+void handle_signal(int  num_of_prompt)
+{
+char *prompt = "\n$$";
+write(STDOUT_FILENO, prompt, 15);
+(void)num_of_prompt;
+}
+
+
+
