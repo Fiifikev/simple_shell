@@ -22,4 +22,26 @@ i++;
 }
 
 return (1);
+
+
+
+
+/**
+ *_strlen - Finds the length of a string
+ *@str: string pointer
+ *Return: len
+ */
+unsigned int _strlen(const char *str)
+{
+int len;
+len = 0;
+
+if (str == NULL)
+return (0);
+
+while (*str++)
+len++;
+return (len);
 }
+
+/**to Convert the string to an interger*/
