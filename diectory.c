@@ -1,7 +1,4 @@
 #include "main.h"
-
-
-
 /**
  *shell_dir -  function that changes working directory
  *@path: working directory of the shell
@@ -26,3 +23,22 @@ return (98);
 return (1);
 }
 
+/**
+ *_getenv - environ variables
+ *@env: environ point
+ *Return: Nothing to put
+ */
+char *_getenv(char **env)
+{
+size_t i;
+size_t len = 0;
+i = 0;
+
+while (env[i])
+{
+len = _strlen(env[i]);
+write(STDOUT_FILENO, env[i], len);
+write(STDOUT_FILENO, "\n", 1);
+i++;
+}
+}
