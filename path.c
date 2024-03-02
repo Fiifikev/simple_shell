@@ -1,9 +1,8 @@
 #include "main.h"
-
- /**
- * get_path - gets the value
- *@env: env
- *Return: path
+/**
+ * get_path - gets PATH from env
+ * @env: environment pointer
+ * Return: pathways
  */
 char **get_path(char **env)
 {
