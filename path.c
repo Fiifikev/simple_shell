@@ -29,15 +29,15 @@ return (NULL);
 }
 
 /**
- *handle_signal- Handles signals
- *@_num_of_prompt: prompts the handle
+ *handle- Handles signals
+ *@_prompt: prompts the handle
  *Return: 0
  */
 
-void handle_signal(int  _num_of_prompt)
+void handle(int _prompt)
 {
-(void)_num_of_prompt;
-write(STDOUT_FILENO, "\n()$$", 15);
+(void)_prompt;
+write(STDOUT_FILENO, "\n(NM$$)$$", 14);
 
 }
 

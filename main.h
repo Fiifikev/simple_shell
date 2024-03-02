@@ -21,12 +21,12 @@ void message_error(char *name, int cic, char **cmd);
 void write_exec(char **cmd, char *name, char **env, int cic);
 void shell_mem(char **cmd);
 void free_shell(char **cmd);
-void handle_signal(int  _num_of_prompt);
+void handle(int signals);
 void _end_of_file(char *buffstr);
 char **find_path(char **env);
 void exit_shell(char **cmd);
 char **shell_token(char *line, const char *str);
 int main(int ac, char **av, char **env);
-void num_of_prompt(void);
+void  prompt(void);
 
 #endif

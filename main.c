@@ -1,27 +1,24 @@
 #include "main.h"
 /**
  *main - main shell
- *@ac: arguments
+ *@num_of_inp_args: arguments
  *@env: environ variable
- *@av: argumnets
+ *@arr_of_inp_args: argumnets
  *Return:0;
  */
-int main(int ac, char **av, char **env)
+int main(int num_of_inp_args, char **arr_of_inp_args, char **env)
 {
-char *line;
-char **cmd;
+char *line, **cmd = NULL;
 size_t size = 0;
 ssize_t stream = 0;
-int cic;
-line = NULL;
-cic = 0;
-(void)ac;
+int cic = 0;
+(void)num_of_inp_args;
 
 while (1)
 {
 cic++;
-num_of_prompt();
-signal(SIGNIT, handle_signal);
+prompt();
+signal(SIGINT, handle);
 stream = getline(&line, &size, stdin);
 /*signal(SIGNIT, handle_signal);*/
 
@@ -39,11 +36,10 @@ exit_shell(cmd);
 else if (_strcmp(cmd[0], "cd") != 0)
 shell_dir(cmd[1]);
 else
-process_child(cmd, av[0], env, cic);
+process_child(cmd, arr_of_inp_args[0], env, cic);
 }
 fflush(stdin);
-line = NULL;
-size = 0;
+line = NULL, size = 0;
 }
 if (stream == -1)
 return (EXIT_FAILURE);

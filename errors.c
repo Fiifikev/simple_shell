@@ -16,8 +16,7 @@ write(STDOUT_FILENO, ": ", 2);
 write(STDOUT_FILENO, &str, 1);
 write(STDOUT_FILENO, ": ", 2);
 write(STDOUT_FILENO, cmd[0], _strlen(cmd[0]));
-write(STDOUT_FILENO, ": not found", 12);
-write(STDOUT_FILENO, "\n", 1);
+write(STDOUT_FILENO, ": not found\n", 12);
 }
 
 

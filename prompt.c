@@ -3,13 +3,13 @@
 
 
 /**
- * num_of_prompt- Handles prompt
- *  * Return: 0
+ * prompt- Handles prompt
+ * Return: 0
  **/
 
-void num_of_prompt(void)
+void prompt(void)
 {
 if (isatty(STDIN_FILENO))
-write(STDOUT_FILENO, "$$", 12);
+write(STDOUT_FILENO, "(NM$$)$$$", 13);
 
 }
