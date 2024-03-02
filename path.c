@@ -35,7 +35,7 @@ return (NULL);
 void handle(int _prompt)
 {
 (void)_prompt;
-write(STDOUT_FILENO, "\n(NMshell)$", 14);
+write(STDOUT_FILENO, "\n(NMshell) $", 14);
 
 }
 

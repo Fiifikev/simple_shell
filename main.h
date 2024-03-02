@@ -18,7 +18,7 @@ unsigned int _strlen(char *s);
 
 void _create_child(char **command, char *name, char **env, int cicles);
 int change_dir(const char *path);
-char *_strcpy(char *destination, char *source);
+char *_strcpy(char *dest, char *src);
 void execute(char **command, char *name, char **env, int cicles);
 void print_env(char **env);
 char **get_path(char **env);
@@ -27,6 +27,6 @@ int _atoi(char *s);
 char **tokening(char *buffer, const char *s);
 void free_mem(char **command);
 void free_exit(char **command);
-char *_strcat(char *destination, char *source);
+char *_strcat(char *dest, char *src);
 
 #endif

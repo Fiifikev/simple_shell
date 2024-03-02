@@ -4,13 +4,13 @@
 
 
 /**
- * create_child - Function process.
- * @command: Pointer to tokenized 
+ *_create_child - Function process.
+ *@command: Pointer to tokenized
  *@name: Pointer to shell name.
  *@env: Enviromental variables pointer.
  *@cicles: No of executed cicles.
  *Return: Nothing.
- *        */
+ */
 void _create_child(char **command, char *name, char **env, int cicles)
 {
 int my_p_i_d = 0;

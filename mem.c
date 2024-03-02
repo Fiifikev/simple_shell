@@ -30,21 +30,21 @@ free(command);
 
 /**
  *_strcat - Function that concatenates two strings.
- *@destination: destination for concatenation
- *@source: an input string
+ *@dest: destination for concatenation
+ *@src: an input string
  *Return: pointer to the resulting string
  */
-char *_strcat(char *destination, char *source)
+char *_strcat(char *dest, char *src)
 {
 char *buff;
-buff = destination;
+buff = dest;
 
-while (*destination)
-destination++;
+while (*dest)
+dest++;
 /**the destination will determine the copy concatenation*/
 
-*destination++ = '/';
-while (*source)
-*destination++ = *source++;
+*dest++ = '/';
+while (*src)
+*dest++ = *src++;
 return (buff);
 }

@@ -10,23 +10,23 @@
 void prompt(void)
 {
 if (isatty(STDIN_FILENO))
-write(STDOUT_FILENO, "(NMshell)$", 13);
+write(STDOUT_FILENO, "(NMshell) $ ", 13);
 }
 
 
 /**
  * _strcpy - copies
- * @destination: pointer
- * @source: pointer
+ * @dest: pointer
+ * @src: pointer
  * Return: Pointer
  */
 
-char *_strcpy(char *destination, char *source)
+char *_strcpy(char *dest, char *src)
 {
-char *aux = destination;
+char *aux = dest;
 
-while (*source)
-*destination++ = *source++;
-*destination = '\0';
+while (*src)
+*dest++ = *src++;
+*dest  = '\0';
 return (aux);
 }
