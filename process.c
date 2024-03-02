@@ -1,40 +1,40 @@
 #include "main.h"
 
-/**
- *process_child -  fork to token
- *@cmd: Pointer token
- *@name: Pointer untoken command
- *@env: Env
- *@cic: Number
- *Return: Nothing.
- */
-void process_child(char **cmd, char *name, char **env, int cic)
-{
-int my_pid = 0;
-/*pid_t my_pid;*/
-int status = 0;
-int Errorwait = 0;
 
-/*child process return value of zero */
-my_pid = fork();
-if (my_pid < 0)
+
+
+/**
+ * create_child - Function process.
+ * @command: Pointer to tokenized 
+ *@name: Pointer to shell name.
+ *@env: Enviromental variables pointer.
+ *@cicles: No of executed cicles.
+ *Return: Nothing.
+ *        */
+void _create_child(char **command, char *name, char **env, int cicles)
 {
-perror("fork fail");
-free_shell(cmd);
+int my_p_i_d = 0;
+int status = 0;
+int waitError = 0;
+
+my_p_i_d = fork();
+if (my_p_i_d < 0)
+{
+perror("Error: ");
+free_exit(command);
 }
-else if (my_pid == 0)
+else if (my_p_i_d == 0)
 {
-/*parent process return value of zero*/
-write_exec(cmd, name, env, cic);
-shell_mem(cmd);
+execute(command, name, env, cicles);
+free_mem(command);
 }
 else
 {
-Errorwait = waitpid(my_pid, &status, 0);
-if (Errorwait < 0)
+waitError = waitpid(my_p_i_d, &status, 0);
+if (waitError < 0)
 {
-free_shell(cmd);
+free_exit(command);
 }
-shell_mem(cmd);
+free_mem(command);
 }
 }

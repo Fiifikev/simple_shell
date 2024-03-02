@@ -8,25 +8,25 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-
-void process_child(char **cmd, char *name, char **env, int cic);
+int main(int ac, char **av, char **env);
+void prompt(void);
+void handle(int signals);
+void _EOF(char *buffer);
+void shell_exit(char **command);
 int _strcmp(char *s1, char *s2);
 unsigned int _strlen(char *s);
-int _atoi(char *str1);
+
+void _create_child(char **command, char *name, char **env, int cicles);
+int change_dir(const char *path);
 char *_strcpy(char *destination, char *source);
+void execute(char **command, char *name, char **env, int cicles);
+void print_env(char **env);
+char **get_path(char **env);
+void msgerror(char *name, int cicles, char **command);
+int _atoi(char *s);
+char **tokening(char *buffer, const char *s);
+void free_mem(char **command);
+void free_exit(char **command);
 char *_strcat(char *destination, char *source);
-int shell_dir(const char *path);
-void _getenv(char **env);
-void message_error(char *name, int cic, char **cmd);
-void write_exec(char **cmd, char *name, char **env, int cic);
-void shell_mem(char **cmd);
-void free_shell(char **cmd);
-void handle(int signals);
-void _end_of_file(char *buffstr);
-char **find_path(char **env);
-void exit_shell(char **cmd);
-char **shell_token(char *line, const char *str);
-int main(int ac, char **av, char **env);
-void  prompt(void);
 
 #endif

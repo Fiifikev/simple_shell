@@ -1,48 +1,49 @@
 #include "main.h"
+
+
+
 /**
- *main - main shell
- *@num_of_inp_args: arguments
- *@env: environ variable
- *@arr_of_inp_args: argumnets
- *Return:0;
+ * main - shell
+ * @num_of_inp_args: Number
+ * @arr_of_inp_args: Pointer
+ * @env: Pointer .
+ * Return: 0.
  */
+
 int main(int num_of_inp_args, char **arr_of_inp_args, char **env)
 {
-char *line, **cmd = NULL;
-size_t size = 0;
+char *buffer = NULL, **command = NULL;
+size_t buf_size = 0;
 ssize_t stream = 0;
-int cic = 0;
+int cicles = 0;
 (void)num_of_inp_args;
 
 while (1)
 {
-cic++;
+cicles++;
 prompt();
 signal(SIGINT, handle);
-stream = getline(&line, &size, stdin);
-/*signal(SIGNIT, handle_signal);*/
-
+stream = getline(&buffer, &buf_size, stdin);
 if (stream == EOF)
-_end_of_file(line);
-else if (*line == '\n')
-free(line);
+_EOF(buffer);
+else if (*buffer == '\n')
+free(buffer);
 else
 {
-line[_strlen(line) - 1] = '\0';
-cmd = shell_token(line, " \0");
-free(line);
-if (_strcmp(cmd[0], "exit") != 0)
-exit_shell(cmd);
-else if (_strcmp(cmd[0], "cd") != 0)
-shell_dir(cmd[1]);
+buffer[_strlen(buffer) - 1] = '\0';
+command = tokening(buffer, " \0");
+free(buffer);
+if (_strcmp(command[0], "exit") != 0)
+shell_exit(command);
+else if (_strcmp(command[0], "cd") != 0)
+change_dir(command[1]);
 else
-process_child(cmd, arr_of_inp_args[0], env, cic);
+_create_child(command, arr_of_inp_args[0], env, cicles);
 }
 fflush(stdin);
-line = NULL, size = 0;
+buffer = NULL, buf_size = 0;
 }
 if (stream == -1)
 return (EXIT_FAILURE);
 return (EXIT_SUCCESS);
 }
-

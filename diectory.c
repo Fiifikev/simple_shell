@@ -1,20 +1,19 @@
 #include "main.h"
+
+
 /**
- *shell_dir -  function that changes working directory
- *@path: working directory of the shell
- *Return: 0  and -1
+ *change_dir -  function that changes working
+ *@path: working directory
+ *Return: 0 and  -1 on failure.
  */
 
-int shell_dir(const char *path)
+int change_dir(const char *path)
 {
-char *line;
-size_t len;
-line = NULL;
-len  = 1024;
-/**char *getcwd(char line[len], size_t len);*/
+char *buf = NULL;
+size_t size = 1024;
 
-if (!path)
-path = getcwd(line, len);
+if (path == NULL)
+path = getcwd(buf, size);
 if (chdir(path) == -1)
 {
 perror(path);
@@ -23,21 +22,28 @@ return (98);
 return (1);
 }
 
-/**
- *_getenv - environ variables
- *@env: environ point
- *Return: Nothing to put
- */
-void _getenv(char **env)
-{
-size_t i;
-size_t len = 0;
-i = 0;
 
-while (env[i])
-len = _strlen(env[i]);
-write(STDOUT_FILENO, env[i], len);
+
+
+
+
+
+
+/**
+ *print_env - prints all enviromental variable.
+ *@env: enviromental variables pointer
+ *return: nothing
+ */
+void print_env(char **env)
+{
+size_t inte = 0, length = 0;
+
+while (env[inte])
+{
+length = _strlen(env[inte]);
+write(STDOUT_FILENO, env[inte], length);
 write(STDOUT_FILENO, "\n", 1);
-i++;
+inte++;
+}
 }
 

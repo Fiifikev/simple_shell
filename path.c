@@ -1,32 +1,30 @@
 #include "main.h"
-/**
- * find_path - gets from PATH
- * @env:  command environ
- * Return: pathways to be precise
- */
-char **find_path(char **env)
-{
-char **ways;
-char  *value;
-unsigned int i;
-value = NULL;
-ways = NULL;
-i = 0;
 
-value = strtok(env[i], "=");
-while (env[i])
+ /**
+ * get_path - gets the value
+ *@env: env
+ *Return: path
+ */
+char **get_path(char **env)
 {
-if (_strcmp(value, "PATH"))
+char **pathways = NULL, *pathvalue = NULL;
+unsigned int inte = 0;
+
+pathvalue = strtok(env[inte], "=");
+while (env[inte])
 {
-ways = shell_token(value, ":");
-value = strtok(NULL, "\n");
-return (ways);
+if (_strcmp(pathvalue, "PATH"))
+{
+pathvalue = strtok(NULL, "\n");
+pathways = tokening(pathvalue, ":");
+return (pathways);
 }
-i++;
-value = strtok(env[i], "=");
+inte++;
+pathvalue = strtok(env[inte], "=");
 }
 return (NULL);
 }
+
 
 /**
  *handle- Handles signals
@@ -37,7 +35,7 @@ return (NULL);
 void handle(int _prompt)
 {
 (void)_prompt;
-write(STDOUT_FILENO, "\n(NM$$)$$", 14);
+write(STDOUT_FILENO, "\n(NMshell)$", 14);
 
 }
 

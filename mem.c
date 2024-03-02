@@ -1,28 +1,32 @@
 #include "main.h"
-/**
- *  * shell_mem - frees all the memory
- *   * @cmd: shell command
- *    * Return: 0
- */
-void shell_mem(char **cmd)
-{
-size_t i;
-i = 0;
 
-if (!cmd)
+
+
+/**
+ * free_mem - free memory
+ * @command: Pointer to allocated memory
+ * Return: nothing.
+ */
+void free_mem(char **command)
+{
+size_t inte = 0;
+
+if (command == NULL)
 return;
 
-while (cmd[i])
+while (command[inte])
 {
-free(cmd[i]);
-i++;
+free(command[inte]);
+inte++;
 }
-/*memory  is free*/
 
-if (!cmd[i])
-free(cmd[i]);
-free(cmd);
+if (command[inte] == NULL)
+free(command[inte]);
+free(command);
 }
+
+
+
 
 /**
  *_strcat - Function that concatenates two strings.

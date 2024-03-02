@@ -1,52 +1,51 @@
 #include "main.h"
 
 /**
- *exit_shell - exting the shell
- *@cmd: token command
- *Return:0
+ *shell_exit - Exits the shell.
+ *@command: Pointer to tokenized command.
+ *Return: nothing
  */
-
-
-void exit_shell(char **cmd)
+void shell_exit(char **command)
 {
 int status = 0;
-if (!cmd[1])
+
+if (command[1] == NULL)
 {
-shell_mem(cmd);
+free_mem(command);
 exit(EXIT_SUCCESS);
 }
-status = _atoi(cmd[1]);
-shell_mem(cmd);
+
+status = _atoi(command[1]);
+free_mem(command);
 exit(status);
 }
 
 
 
 /**
- *free_shell - free all the memory allocated and exit
- *@cmd: pointer to command memory
- *Return: 0
+ * free_exit - free all the memory allocated and exit
+ * @command: pointer to command memory
+ * Return: Nothing.
  */
 
-void free_shell(char **cmd)
+void free_exit(char **command)
 {
-size_t i = 0;
+size_t inte = 0;
 
-if (!cmd)
+if (command == NULL)
 return;
 
-while (cmd[i])
+while (command[inte])
 {
-free(cmd[i]);
-i++;
+free(command[inte]);
+inte++;
 }
 
-if (!cmd[i])
-free(cmd[i]);
-free(cmd);
+if (command[inte] == NULL)
+free(command[inte]);
+free(command);
 exit(EXIT_FAILURE);
 }
-
 
 
 

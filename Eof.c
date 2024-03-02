@@ -1,22 +1,29 @@
 #include "main.h"
 /**
- *_end_of_file - checks the EOF
- *@buffstr: Pointer
- *Return: 0
+ *_EOF -  EOF
+ *@buffer_str: Pointer string.
+ *Return: None
  */
-void _end_of_file(char *buffstr)
+void _EOF(char *buffer_str)
 {
-if (buffstr)
+if (buffer_str)
 {
-buffstr = NULL;
-free(buffstr);
+free(buffer_str);
+buffer_str = NULL;
 }
-/* readed  end of file*/
 if (isatty(STDIN_FILENO))
 write(STDOUT_FILENO, "\n", 1);
-free(buffstr);
+free(buffer_str);
 exit(EXIT_SUCCESS);
 }
+
+
+
+
+
+
+
+
 
 
 /**
@@ -26,13 +33,13 @@ exit(EXIT_SUCCESS);
  */
 unsigned int _strlen(char *s)
 {
-int len;
-len = 0;
+int lenght;
+lenght = 0;
 
-if (s == NULL)
+if (!s)
 return (0);
 
 while (*s++)
-len++;
-return (len);
+lenght++;
+return (lenght);
 }

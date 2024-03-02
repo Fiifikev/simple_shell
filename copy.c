@@ -11,14 +11,14 @@
 
 int _strcmp(char *s1, char *s2)
 {
-unsigned int i;
-i = 0;
+unsigned int inte;
+inte = 0;
 
-while (s1[i])
+while (s1[inte])
 {
-if (s1[i] != s2[i])
+if (s1[inte] != s2[inte])
 return (0);
-i++;
+inte++;
 }
 
 return (1);

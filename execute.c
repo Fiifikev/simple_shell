@@ -1,53 +1,52 @@
-#include "main.h"
+#include  "main.h"
+
+
+
 
 /**
- *write_exec - function that executes a command
- *@cmd: command pointer
+ *execute - function that executes a command
+ *@command: command pointer
  *@name: shell name
  *@env: environmental variables pointer
- *@cic: number of executed cicles
+ *@cicles: number of executed cicles
  *Return: nothing
  */
-
-void write_exec(char **cmd, char *name, char **env, int cic)
+void execute(char **command, char *name, char **env, int cicles)
 {
-char **ways;
-char *side_path;
+char **pathways = NULL, *full_path = NULL;
 struct stat st;
-unsigned int i;
-i = 0;
-ways = NULL;
-side_path = NULL;
+unsigned int i = 0;
 
-if (_strcmp(cmd[0], "env") != 0)
-_getenv(env);  /* to check the error of the file*/
-if (stat(cmd[0], &st) == 0)
+if (_strcmp(command[0], "env") != 0)
+print_env(env);
+if (stat(command[0], &st) == 0)
 {
-if (execve(cmd[0], cmd, env) < 0)
+if (execve(command[0], command, env) < 0)
 {
 perror(name);
-free_shell(cmd);
+free_exit(command);
 }
 }
 else
 {
-ways = find_path(env);
-while (ways[i])
+pathways = get_path(env);
+while (pathways[i])
 {
-side_path = _strcat(ways[i], cmd[0]);
+full_path = _strcat(pathways[i], command[0]);
 i++;
-if (stat(side_path, &st) == 0)
+if (stat(full_path, &st) == 0)
 {
-if (execve(side_path, cmd, env) < 0)
+if (execve(full_path, command, env) < 0)
 {
 perror(name);
-shell_mem(ways);
-free_shell(cmd);
+free_mem(pathways);
+free_exit(command);
 }
 return;
 }
 }
-message_error(name, cic, cmd);
-shell_mem(ways);
+msgerror(name, cicles, command);
+free_mem(pathways);
 }
 }
+

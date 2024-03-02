@@ -1,54 +1,48 @@
 #include "main.h"
 
 
-/**spliting purposes*/
-/**Tokenization*/
 
 
 /**
- **shell_token - Split puroses
- *@str:  delimniter
- *@line:  input string.
- *Return: command.
+ *tokening - Split and create a full string command.
+ *@str: Delimiter for strtok.
+ *@buffer: Pointer to input string.
+ *Return: String with full command.
  */
-char **shell_token(char *line, const char *str)
+char **tokening(char *buffer, const char *str)
 {
-char *token = NULL;
-int i;
-char  **cmds;
-size_t bufflenSize = 0;
-cmds = NULL;
-i = 0;
+char *token = NULL, **commands = NULL;
+size_t bufferSize = 0;
+int i = 0;
 
-if (!line)
+if (buffer == NULL)
 return (NULL);
 
-bufflenSize = _strlen(line);
-/*to check up on the string command*/
-cmds = malloc((bufflenSize + 1) * sizeof(char *));
-if (cmds == NULL)
+bufferSize = _strlen(buffer);
+commands = malloc((bufferSize + 1) * sizeof(char *));
+if (commands == NULL)
 {
-shell_mem(cmds);
-perror("Error");
-free(line);
+perror("Buffer allocation error");
+free(buffer);
+free_mem(commands);
 exit(EXIT_FAILURE);
 }
 
-token = strtok(line, str);
+token = strtok(buffer, str);
 while (token != NULL)
 {
-cmds[i] = malloc(_strlen(token) + 1);
-if (!cmds[i])
+commands[i] = malloc(_strlen(token) + 1);
+if (commands[i] == NULL)
 {
-perror("Buffer Error");
-shell_mem(cmds);
+perror("Buffer allocation error");
+free_mem(commands);
 return (NULL);
 }
-strcpy(cmds[i], token);
+strcpy(commands[i], token);
 token = strtok(NULL, str);
 i++;
 }
 
-cmds[i] = NULL;
-return (cmds);
+commands[i] = NULL;
+return (commands);
 }
